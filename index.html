@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>სასწავლო ბარათი</title>
+    <style>
+        :root {
+            --primary-teal: #4a6163;
+            --bg-gray: #f9f9f9;
+            --border-color: #e0e0e0;
+            --success-green: #2ecc71;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: var(--bg-gray);
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* Header with placeholders */
+        header {
+            background: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .logo-placeholder, .profile-placeholder {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        overflow: hidden; /* Ensures the image stays within the circle */
+        border: 1px solid #ccc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: white;
+    }
+
+    .logo-placeholder img, .profile-placeholder img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; /* Keeps the TSU logo from cutting off */
+    }
+
+    .profile-placeholder img {
+        object-fit: cover; /* Best for user portraits */
+    }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* Stats Section */
+        .stats-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .stat-box {
+            background: #eeeeee;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+            font-weight: bold;
+        }
+
+        .stat-label { font-size: 14px; color: #555; display: block; }
+        .stat-value { font-size: 18px; color: #000; }
+
+        /* Table Styling */
+        .table-wrapper {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background-color: var(--primary-teal);
+            color: white;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .status-dot {
+            height: 12px;
+            width: 12px;
+            background-color: var(--success-green);
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        /* Responsive: Stacked Cards for Mobile */
+        @media (max-width: 768px) {
+            thead { display: none; }
+            
+            tr {
+                display: block;
+                margin-bottom: 15px;
+                border: 1px solid var(--border-color);
+                border-radius: 8px;
+                background: white;
+            }
+
+            td {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                text-align: right;
+                border-bottom: 1px solid #eee;
+            }
+
+            td::before {
+                content: attr(data-label);
+                font-weight: bold;
+                text-align: left;
+                color: var(--primary-teal);
+            }
+
+            td:last-child { border-bottom: none; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+   <div class="logo-placeholder">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/TSU_logo.png" alt="TSU Logo">
+    </div>
+    <div style="font-size: 14px; font-weight: bold;">სასწავლო ბარათი</div>
+    <div class="profile-placeholder">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbjh3VyKm2s062XIHoBcOLBE3YJABlFd4vbw&s" alt="User Profile">
+    </div>
+</header>
+
+<div class="container">
+    <div class="stats-container">
+        <div class="stat-box">
+            <span class="stat-label">საშუალო ქულა:</span>
+            <span class="stat-value">71.05</span>
+        </div>
+        <div class="stat-box">
+            <span class="stat-label">დაგროვილი კრედიტები:</span>
+            <span class="stat-value">30</span>
+        </div>
+        <div class="stat-box">
+            <span class="stat-label">GPA:</span>
+            <span class="stat-value">2.18</span>
+        </div>
+    </div>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>სასწავლო კურსი</th>
+                    <th>პედაგოგ(ებ)ი</th>
+                    <th>სტატუსი</th>
+                    <th>კრედიტი</th>
+                    <th>სემესტრი</th>
+                    <th>ქულა</th>
+                    <th>სტატუსი</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-label="კურსი">ბიზნესის ადმინისტრირების საფუძვლები 1</td>
+                    <td data-label="პედაგოგი">ლალი ხიხაძე</td>
+                    <td data-label="სტატუსი">სავალდებულო</td>
+                    <td data-label="კრედიტი">5</td>
+                    <td data-label="სემესტრი">1</td>
+                    <td data-label="ქულა">74.00</td>
+                    <td data-label="სტატუსი">დაშვებულია <span class="status-dot"></span></td>
+                </tr>
+                <tr>
+                    <td data-label="კურსი">ინგლისური ენა B2.1</td>
+                    <td data-label="პედაგოგი">ქეთევან ხუციშვილი</td>
+                    <td data-label="სტატუსი">სავალდებულო</td>
+                    <td data-label="კრედიტი">5</td>
+                    <td data-label="სემესტრი">1</td>
+                    <td data-label="ქულა">91.85</td>
+                    <td data-label="სტატუსი">დაშვებულია <span class="status-dot"></span></td>
+                </tr>
+                <tr>
+                    <td data-label="კურსი">ინფორმატიკა ეკონომიკასა და ბიზნესში</td>
+                    <td data-label="პედაგოგი">ანზორ გელაშვილი</td>
+                    <td data-label="სტატუსი">სავალდებულო</td>
+                    <td data-label="კრედიტი">5</td>
+                    <td data-label="სემესტრი">1</td>
+                    <td data-label="ქულა">66.65</td>
+                    <td data-label="სტატუსი">დაშვებულია <span class="status-dot"></span></td>
+                </tr>
+                <tr>
+                    <td data-label="კურსი">კურორტის მენეჯმენტი</td>
+                    <td data-label="პედაგოგი">ელისაბედ ბალიაშვილი</td>
+                    <td data-label="სტატუსი">არჩევითი</td>
+                    <td data-label="კრედიტი">5</td>
+                    <td data-label="სემესტრი">1</td>
+                    <td data-label="ქულა">78.8</td>
+                    <td data-label="სტატუსი">დაშვებულია <span class="status-dot"></span></td>
+                </tr>
+                <tr>
+                    <td data-label="კურსი">მათემატიკა ეკონომიკისა და ბიზნესისთვის 1</td>
+                    <td data-label="პედაგოგი">ნუგზარ კაპანაძე</td>
+                    <td data-label="სტატუსი">სავალდებულო</td>
+                    <td data-label="კრედიტი">5</td>
+                    <td data-label="სემესტრი">1</td>
+                    <td data-label="ქულა">51.0</td>
+                    <td data-label="სტატუსი">დაშვებულია <span class="status-dot"></span></td>
+                </tr>
+                <tr>
+                    <td data-label="კურსი">მიკროეკონომიკის პრინციპები</td>
+                    <td data-label="პედაგოგი">თეიმურაზ ბერიძე</td>
+                    <td data-label="სტატუსი">სავალდებულო</td>
+                    <td data-label="კრედიტი">5</td>
+                    <td data-label="სემესტრი">1</td>
+                    <td data-label="ქულა">64.0</td>
+                    <td data-label="სტატუსი">დაშვებულია <span class="status-dot"></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
